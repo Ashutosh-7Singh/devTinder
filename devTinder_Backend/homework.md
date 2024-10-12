@@ -66,5 +66,9 @@ Eposide-08
 * DATA Sanitization - Add api validation fro each fields
 * Install validator 
 * Explore  validator library function and use validator function for  password,photo and url 
-* Never trust req.body so always validate and sanitize your code ok
-
+* Never trust req.b  ody so always validate and sanitize your code ok
+* Validate data in Signup API
+* Install bcrypt package
+* Create PasswordHash using bcrypt.hash & save the user is excrupted password
+* Create login API
+* Compare password and throw errors if email or password is envalid
