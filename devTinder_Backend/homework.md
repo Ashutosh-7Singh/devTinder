@@ -80,3 +80,6 @@ Eposide-10
 * Install json web token
 * In login API ,after email and password verification  create a jwt token and send it back to user in cookied
 * Read the cookie inside your profile api and find the looged in user 
+* userAuth Middleware
+* Add the userAuth middle  ware in profile API and a new sendConnectionRequest API
+* Set the expiry of JWT token and cookies to 7 days 
