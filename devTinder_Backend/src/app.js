@@ -17,27 +17,32 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// GET| User by email here we check by email
-app.get("/user",async(req,res)=>{
-  const userEmail=req.body.emailId;
-  try{
-    const users = await User.find({emailId:userEmail});
-    if(users.length===0){
+// GET| User by email here we check by emailm,
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.emailId;
+  try {
+    const users = await User.find({ emailId: userEmail });
+    if (users.length === 0) {
       res.status(404).send("User not found");
-    }else{
+    } else {
       res.send(users);
     }
-  }catch(err){
+  } catch (err) {
     res.status(400).send("Something went wrong");
   }
-})
+});
 
-// Feed API =GET/FEED -get feed /data of all the users 
-app.get("/feed",async(req,res)=>{
-  const users= await User.find({});
-  res.send(users)
-})
-
+// Feed API =GET/FEED -get feed /data of all the users
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.send(users);
+  } catch (err){
+    res.status(400).send("Something Went wrong")
+  }
+  const users = await User.find({});
+  res.send(users);
+});
 
 connectDB()
   .then(() => {

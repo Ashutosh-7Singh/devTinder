@@ -72,3 +72,14 @@ Eposide-08
 * Create PasswordHash using bcrypt.hash & save the user is excrupted password
 * Create login API
 * Compare password and throw errors if email or password is envalid
+
+Eposide-10
+* Install cookie parser
+* Send dummy cokkie to user 
+* Create a dummy profile api and check if the cookie back  we can send by res.send 
+* Install json web token
+* In login API ,after email and password verification  create a jwt token and send it back to user in cookied
+* Read the cookie inside your profile api and find the looged in user 
+* userAuth Middleware
+* Add the userAuth middle  ware in profile API and a new sendConnectionRequest API
+* Set the expiry of JWT token and cookies to 7 days 

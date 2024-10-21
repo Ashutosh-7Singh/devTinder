@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const userSchema= new mongoose.Schema({
     firstName:{
         type:String,
-        type:true,
+        require:true,
     },
     lastName:{
         type:String
@@ -19,7 +19,8 @@ const userSchema= new mongoose.Schema({
     gender:{
         type:String
     }
-})
+});
+
 
 
 // const User=mongoose.model("user",userSchema);
