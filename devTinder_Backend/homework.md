@@ -83,3 +83,5 @@ Eposide-10
 * userAuth Middleware
 * Add the userAuth middle  ware in profile API and a new sendConnectionRequest API
 * Set the expiry of JWT token and cookies to 7 days 
+* Create userSchema method to getJWT()
+* Create userSchma method to comparePassword(passwordInputUser)
