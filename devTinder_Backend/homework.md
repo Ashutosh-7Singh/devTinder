@@ -88,3 +88,7 @@ Eposide-10
 * Explore tinder API's 
 * Creata a list of all API's you have think to build devtinder
 * Group the all API's under respective routerName
+* Read documentaion for express.Router
+* Create routes folder for managing auth ,profile,request routers
+* create authRouter ,profileRouter and request router
+* Import these routers in app.js
