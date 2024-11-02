@@ -85,3 +85,6 @@ Eposide-10
 * Set the expiry of JWT token and cookies to 7 days 
 * Create userSchema method to getJWT()
 * Create userSchma method to comparePassword(passwordInputUser)
+* Explore tinder API's 
+* Creata a list of all API's you have think to build devtinder
+* Group the all API's under respective routerName
