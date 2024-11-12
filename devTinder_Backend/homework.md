@@ -96,3 +96,17 @@ Eposide-10
 * Create PATCH /profile/edit API
 * Create PATCH /prfile/password API +> forgot password API
 * Make you validate all data in every POST ,PATCH APis
+
+Eposide-12
+* Create connection Request Schema
+* Send Connection Request API's
+* Proper validation of data
+* Think about all corner comparePassword
+* Read about $or and $and qury in mongooose or mongoDB ->[text](https://www.mongodb.com/docs/manual/reference/operator/query/or/)
+* Schema.pre("save") function 
+* Read more about indexes in MongoDB
+* Why do we need index in DB?
+* What is the advantages and disadvantage of createaing index?
+* Read the article about compund indexes
+* ALWAYS  THINK ABOUT CORNER CASES 
+* Write code with proper validation for POST /request/review/:status/:requestId
