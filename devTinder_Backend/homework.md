@@ -110,3 +110,7 @@ Eposide-12
 * Read the article about compund indexes
 * ALWAYS  THINK ABOUT CORNER CASES 
 * Write code with proper validation for POST /request/review/:status/:requestId
+* Though process for POST & GET API's
+* Read abouot ref and populate on mongooose docs
+* Create GET /user/request/recieved with tall the checks
+
