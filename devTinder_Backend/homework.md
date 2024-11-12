@@ -107,4 +107,6 @@ Eposide-12
 * Read more about indexes in MongoDB
 * Why do we need index in DB?
 * What is the advantages and disadvantage of createaing index?
-* 
+* Read the article about compund indexes
+* ALWAYS  THINK ABOUT CORNER CASES 
+* Write code with proper validation for POST /request/review/:status/:requestId
