@@ -67,7 +67,7 @@ const userSchema = new mongoose.Schema(
     photoUrl: {
       type: String,
       default:
-        "https://avatars.githubusercontent.com/u/149468363?s=400&u=80f4b7fc8f333b101d881b63b8e273d4f0d1d0fe&v=4",
+        "https://avatars.githubusercontent.com/u/149756205?v=4",
       validate(value) {
         if (!validator.isURL(value)) {
           throw new Error("Invalid photo URL  " + value);
