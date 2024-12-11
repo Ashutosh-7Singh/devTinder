@@ -1,5 +1,10 @@
 # React + Vite
-
+-Create a Vite + react application
+-Remove unecessary code and createa a Hello World app
+-Install Tailwind CSS
+-Add NavBar component to App.jsx
+-Create a NavBar separate Component file 
+-
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -9,3 +14,5 @@ Currently, two official plugins are available:
 - install DaisyUI and 
 -Add NavBar componenet to app.jsx
 
+- Install react router dom
+- Create Browser Router
