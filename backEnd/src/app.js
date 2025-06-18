@@ -39,36 +39,67 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// app.post("/login", async (req, res) => {
+//   try {
+//     const { emailId, password } = req.body;
+//     if (!validator.isEmail(emailId)) {
+//       return res.status(404).send("Invalid Email in login");
+//     }
+
+//     const user = await User.findOne({ emailId: emailId });
+
+//     if (!user) {
+//       return res.status(404).send("Invalid Crendtials");
+//     }
+
+//     const ispasswordValid = await user.validatePassword(password)
+//     if (ispasswordValid) {
+//       // create a JWT token
+//       const token = await user.getJWT();
+
+//       // Add the token to cookie and send the response back to the user
+//       res.cookie("token", token),
+//       {
+//         expires:new Date(Date.now() * 8 * 3600000)
+//       };
+//       res.status(200).send("Login sucessfull");
+//     } else {
+//       return res.status(404).send("Invalid Crendential Pass");
+//     }
+//   } catch (error) {
+//     res.status(500).send("Something Went wrong" + error.message);
+//   }
+// });
+
+
 app.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
     if (!validator.isEmail(emailId)) {
-      return res.status(404).send("Invalid Email in login");
+      return res.status(400).send("Invalid Email in login");
     }
 
-    const user = await User.findOne({ emailId: emailId });
-
+    const user = await User.findOne({ emailId });
     if (!user) {
-      return res.status(404).send("Invalid Crendtials");
+      return res.status(404).send("Invalid Credentials");
     }
 
-    const ispasswordValid = await bcrypt.compare(password, user.password);
-    if (ispasswordValid) {
-      // create a JWT token
-      const token = await jwt.sign({ _id:user._id }, "DEV@Tinder$790",{
-        expiresIn:"1d",
-      });
-
-      // Add the token to cookie and send the response back to the user
-      res.cookie("token", token),{
-        expires:new Date(Date.now() * 8 * 3600000)
-      };
-      res.status(200).send("Login sucessfull");
-    } else {
-      return res.status(404).send("Invalid Crendential Pass");
+    const isPasswordValid = await user.validatePassword(password);
+    if (!isPasswordValid) {
+      return res.status(401).send("Invalid Credential Pass");
     }
+
+    const token = await user.getJwt(); // ✅ FIXED: Call method
+
+    // ✅ FIXED: Set cookie correctly
+    res.cookie("token", token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 8 * 3600000), // 8 hours
+    });
+
+    res.status(200).send("Login successful");
   } catch (error) {
-    res.status(500).send("Something Went wrong" + error.message);
+    res.status(500).send("Something went wrong: " + error.message);
   }
 });
 
@@ -77,7 +108,7 @@ app.get("/profile",userAuth, async (req, res) => {
    const user = req.user
  
    res.send(user)
- }catch(error){
+ }catch(error){ 
   res.status(400).send("something went wrong :- "  + error.message)
  }
   
