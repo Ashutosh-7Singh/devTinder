@@ -2,129 +2,18 @@ const express = require("express");
 const connectDb = require("./config/database");
 const app = express();
 const User = require("./models/User");
-const bcrypt = require("bcrypt");
-const validator = require("validator");
-const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
-const validateSignupData = require("./utils/validation");
-const userAuth = require("./midlewares/auth");
 
-app.use(express.json());
-app.use(cookieParser());
-
-
-app.post("/signup", async (req, res) => {
-  try {
-    // validate SignUp data
-    validateSignupData(req);
-    const { firstName, lastName, emailId, password } = req.body;
-
-    // Encrypt the password
-    const passwordHash = await bcrypt.hash(password, 10);
-    // console.log(passwordHash);
-    const user = new User({
-      firstName,
-      lastName,
-      emailId,
-      password: passwordHash,
-    });
-
-    await user.save();
-
-    res.status(201).json({ message: "User added successfully", user });
-  } catch (error) {
-    res
-      .status(400)
-      .json({ message: "Something went wrong", error: error.message });
-  }
-});
-
-// app.post("/login", async (req, res) => {
-//   try {
-//     const { emailId, password } = req.body;
-//     if (!validator.isEmail(emailId)) {
-//       return res.status(404).send("Invalid Email in login");
-//     }
-
-//     const user = await User.findOne({ emailId: emailId });
-
-//     if (!user) {
-//       return res.status(404).send("Invalid Crendtials");
-//     }
-
-//     const ispasswordValid = await user.validatePassword(password)
-//     if (ispasswordValid) {
-//       // create a JWT token
-//       const token = await user.getJWT();
-
-//       // Add the token to cookie and send the response back to the user
-//       res.cookie("token", token),
-//       {
-//         expires:new Date(Date.now() * 8 * 3600000)
-//       };
-//       res.status(200).send("Login sucessfull");
-//     } else {
-//       return res.status(404).send("Invalid Crendential Pass");
-//     }
-//   } catch (error) {
-//     res.status(500).send("Something Went wrong" + error.message);
-//   }
-// });
-
-
-app.post("/login", async (req, res) => {
-  try {
-    const { emailId, password } = req.body;
-    if (!validator.isEmail(emailId)) {
-      return res.status(400).send("Invalid Email in login");
-    }
-
-    const user = await User.findOne({ emailId });
-    if (!user) {
-      return res.status(404).send("Invalid Credentials");
-    }
-
-    const isPasswordValid = await user.validatePassword(password);
-    if (!isPasswordValid) {
-      return res.status(401).send("Invalid Credential Pass");
-    }
-
-    const token = await user.getJwt(); // ✅ FIXED: Call method
-
-    // ✅ FIXED: Set cookie correctly
-    res.cookie("token", token, {
-      httpOnly: true,
-      expires: new Date(Date.now() + 8 * 3600000), // 8 hours
-    });
-
-    res.status(200).send("Login successful");
-  } catch (error) {
-    res.status(500).send("Something went wrong: " + error.message);
-  }
-});
-
-app.get("/profile",userAuth, async (req, res) => {
- try{
-   const user = req.user
- 
-   res.send(user)
- }catch(error){ 
-  res.status(400).send("something went wrong :- "  + error.message)
- }
-  
-});
+const authRouter = require("./routes/auth")
+const profileRouter=require("./routes/profile")
+const connectionRequest=require("./routes/request")
 
 
 
-app.post("/sendingConnectionRequest", userAuth , async (req,res)=>{
-  const user = req.user;
 
-  // sending a connection request
 
-  console.log("Sending a conenction request ");
-
-  res.send(user.firstName + " Sent the conection request !")
-})
+app.use("/",authRouter)
+app.use("/",profileRouter)
+app.use("/",connectionRequest)
 
 
 
