@@ -12,11 +12,11 @@
             POST /request/send/intrested/:userId
             POST /request/send/ignored/:userId
             POST /request/review/accepted/:requestedID
-            POST /request/review/accepted/:rejectedID
+            POST /request/review/rejected/:rejectedID
 
             ##  userRouter
             GET /connections
-            GET /request/received
+            GET /user/requests/recieved
             GET /feed - Gets you the profiles of others users on platform
 
 

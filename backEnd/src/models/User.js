@@ -42,11 +42,15 @@ const userSchema = new mongoose.Schema(
     gender: {
       type: String,
       trim: true,
-      validate(value) {
-        if (!["male", "female", "others"].includes(value.toLowerCase())) {
-          throw new Error("Gender data is not valid");
-        }
+      enum:{
+        values:["male","female","others"],
+        message:`{VALUE} is not valid gender type`
       },
+      // validate(value) {
+      //   if (!["male", "female", "others"].includes(value.toLowerCase())) {
+      //     throw new Error("Gender data is not valid");
+      //   }
+      // },
     },
     skills: {
       type: [String],
@@ -71,6 +75,11 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+
+
+
+// suppose we want to search a user using firstName and lastName then we put the compound index on the firstName and lastName 
+ userSchema.index({firstName:1,lastName:1})
 userSchema.methods.getJwt = async function () {
   const user = this;
 

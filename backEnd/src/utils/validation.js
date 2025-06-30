@@ -18,4 +18,28 @@ const validateSignupData = (req) => {
   }
 };
 
-module.exports = validateSignupData;
+const validateEditPrfileData = (req) => {
+  const allowedEditFields = [
+    "firstName", "lastName", "photoUrl", "gender", "age", "about", "skills"
+  ]
+  
+  // if(!validator.isURL(photoUrl)){
+  //   throw new Error("Photo Url is not valid ")
+  // }
+
+
+
+  const isEditAllowed = Object.keys(req.body).every(field => allowedEditFields.includes(field));
+
+return isEditAllowed;
+
+
+}
+
+
+
+module.exports = {
+  validateSignupData,
+  validateEditPrfileData
+
+}
