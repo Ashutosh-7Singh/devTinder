@@ -69,8 +69,8 @@ requestRouter.post("/request/review/:status/:requestId",
     try {
       const loggedInUser = req.user;
       const { status, requestId } = req.params;
-      console.log(req.params);
-      console.log(loggedInUser._id);
+      // console.log(req.params);
+      // console.log(loggedInUser._id);
 
       const allowedStatus = ["accepted", "rejected"];
 
@@ -83,8 +83,8 @@ requestRouter.post("/request/review/:status/:requestId",
         _id: requestId,
         toUserId: loggedInUser._id,
         status: "interested",
-      });
-      console.log("connectionReqest", connectionReqest);
+      })
+      // console.log("connectionReqest", connectionReqest);
 
       if (!connectionReqest) {
         return res.status(404).json({ message: "No matching request found" });

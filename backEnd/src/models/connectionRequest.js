@@ -3,6 +3,9 @@ const mongoose= require("mongoose");
 const connectionRequestSchema = new mongoose.Schema({
     fromUserId:{
         type:mongoose.Schema.Types.ObjectId,
+        // ref is used for reference it helps to create connection betweem two schema or collection with the help of this we can easily populate the data form one collection to another collection
+
+        ref:"User",//reference to user collection
         required:true
     },
     toUserId:{
