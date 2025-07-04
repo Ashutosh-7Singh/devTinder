@@ -5,3 +5,16 @@
 -Install Tailwind CSS
 -Install Daisy UI
 -Add NavBar component in App.jsx
+-Create a  saperaet NavBar Component 
+- install npm react-router-dom 
+-Create BrowserRouter>Routes>Route 
+-outlet creatd 
+-footer created
+
+
+# component Design
+- Body  
+    NavBar 
+    Route=/ => Feed
+    Route=/login =>Login
+    route=/connection =>Connection
