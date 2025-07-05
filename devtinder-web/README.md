@@ -16,6 +16,8 @@
 -Add Redux dev tool in login and update navbar 
 -Navbar should update whenuser login 
 -Refator our code to add contants file + crate a compenents folder and move all the component in this 
+-If token is not prosent ,redirect user to login page 
+-Logout
 
 # component Design
 - Body  
