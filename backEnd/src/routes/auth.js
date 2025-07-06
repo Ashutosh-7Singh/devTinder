@@ -51,7 +51,7 @@ authRouter.post("/login", async (req, res) => {
 
     const isPasswordValid = await user.validatePassword(password);
     if (!isPasswordValid) {
-      return res.status(401).send("Invalid Credential Pass");
+      return res.status(401).send("Invalid Credential");
     }
 
     const token = await user.getJwt(); // ✅ FIXED: Call method
