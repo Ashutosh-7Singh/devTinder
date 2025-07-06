@@ -5,7 +5,7 @@ const UserCard = (user) => {
     console.log(user);
     
   return (
-   <div className="card bg-base-100 w-96 shadow-sm">
+   <div className="card bg-base-300 w-96 shadow-sm">
   <figure>
     <img
       src={user?.user?.photoUrl} 
@@ -18,7 +18,7 @@ const UserCard = (user) => {
     <div className="card-actions justify-center my-4">
 
       <button className="btn btn-primary">Ignore</button>
-      <button className="btn btn-primary">Send Request</button>
+      <button className="btn btn-secondary">Interested</button>
     </div>
   </div>
 </div>

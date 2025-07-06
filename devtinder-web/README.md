@@ -19,6 +19,9 @@
 -If token is not prosent ,redirect user to login page 
 -Logout done
 -Profile
+-get the feed in the store 
+-build the user card on feed
+
 
 # component Design
 - Body  
