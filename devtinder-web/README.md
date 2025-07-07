@@ -21,7 +21,9 @@
 -Profile
 -get the feed in the store 
 -build the user card on feed
-
+-Edit profile feature and show toast on save 
+-Seel all my connection
+-
 
 # component Design
 - Body  

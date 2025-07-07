@@ -11,8 +11,6 @@ const USER_SAFE_DATA = "firstName lastName photoUrl age gender about skills";
 userRouter.get("/user/requests/recieved", userAuth, async (req, res) => {
     try {
         const loggedInUser = req.user;
-
-
         const connectionRequest = await ConnectionRequestModel.find({
             toUserId: loggedInUser._id,
             status: "interested"
