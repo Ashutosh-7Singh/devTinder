@@ -23,7 +23,7 @@
 -build the user card on feed
 -Edit profile feature and show toast on save 
 -Seel all my connection
--
+-New page -See all my connection request
 
 # component Design
 - Body  
