@@ -24,6 +24,15 @@
 -Edit profile feature and show toast on save 
 -Seel all my connection
 -New page -See all my connection request
+-New page -See all my Requests page
+-Feature Accept/Reject Connection Request 
+- 
+
+Remaning 
+-Send/ignore the user card from feed 
+-signup New User
+-E2Etesting
+
 
 # component Design
 - Body  
