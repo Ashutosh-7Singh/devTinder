@@ -1,5 +1,5 @@
 const express = require("express");
-const {validateSignupData} = require("../utils/validation");
+const { validateSignupData } = require("../utils/validation");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
@@ -27,9 +27,14 @@ authRouter.post("/signup", async (req, res) => {
       password: passwordHash,
     });
 
-    await user.save();
+    const savedUser = await user.save();
+    const token = await savedUser.getJwt();
 
-    res.status(201).json({ message: "User added successfully", user });
+    res.cookie("token", token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 8 * 3600000),
+    });
+    res.status(201).json({ message: "User added successfully", data: savedUser });
   } catch (error) {
     res
       .status(400)
@@ -70,9 +75,9 @@ authRouter.post("/login", async (req, res) => {
 });
 
 
-authRouter.post("/logout",async(req,res)=>{
-  res.cookie("token",null ,{
-    expires:new Date(Date.now()),
+authRouter.post("/logout", async (req, res) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
   })
   res.send("Logout successfully");
 })
